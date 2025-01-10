@@ -7,6 +7,9 @@ function ReservationPage() {
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState('');
 
+  // Calculer la date d'aujourd'hui au format "YYYY-MM-DD"
+  const today = new Date().toISOString().split('T')[0];
+
   const handleReservation = () => {
     alert(`Réservation confirmée pour ${guests} personne(s) le ${day} à ${time}.`);
   };
@@ -21,6 +24,7 @@ function ReservationPage() {
             type="date"
             value={day}
             onChange={(e) => setDay(e.target.value)}
+            min={today} // Limite la sélection aux dates d'aujourd'hui ou ultérieures
             className="w-full p-2 border rounded"
           />
         </div>
